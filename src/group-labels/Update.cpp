@@ -21,6 +21,8 @@ void GroupLabels::update(LevelEditorLayer* editor) {
 
     Cache::updatedTriggers.clear();
 
+    Cache::currentLayer = editor->m_currentLayer;
+
     // in my search for the fastest way to convert shit to a string we are going c style :3
     // (this is an awful idea and a direct result of my laziness)
     char c[12];
