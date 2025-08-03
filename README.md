@@ -1,6 +1,8 @@
 # Group Label Shenanigans
 adds group labels to more objects, some customization options, makes them not rotate, yk, shenanigans
 
+***you dont get named editor groups support until its mod dev fixes it for mac, if ur a windows dev make a pr or smth idk***
+
 ## Credits
 - ***farp3*** for the no rotate idea
 - ***sandboxer*** for the *"add group labels to stuff that should really have group labels but dont for some reason"* idea

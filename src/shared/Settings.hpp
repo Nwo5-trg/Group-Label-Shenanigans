@@ -15,4 +15,5 @@ namespace Settings {
     void set(bool& setting, const char* key);
     void set(int& setting, const char* key);
     void set(float& setting, const char* key);
+    void set(std::unordered_set<int>& setting, const char* key);
 }

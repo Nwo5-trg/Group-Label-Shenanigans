@@ -8,7 +8,7 @@
 	},
 	"id": "nwo5.group_labels",
 	"name": "Group Label Shenanigans",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "Nwo5",
 	"links": {"source": "https://github.com/Nwo5-trg/Group-Label-Shenanigans"},
 	"tags": ["editor", "bugfix", "customization", "utility", "enhancement", "offline"],
@@ -59,6 +59,13 @@
 			"default": -4.5,
 			"max": 1000,
 			"min": -1000
+		},
+		"trigger-whitelist": {
+			"type": "string",
+			"name": "Trigger Whitelist",
+			"description": "these triggers wont get affected by the mod | maybe dont remove the ones in here by default if you like having collision blocks display properly | you can input more trigger ids like, '1,2,3,4,5'",
+			"default": "3640,1816,3643",
+			"filter": "1234567890,"
 		}
 	}
 }

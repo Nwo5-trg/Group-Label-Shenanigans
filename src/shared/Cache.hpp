@@ -7,8 +7,7 @@ namespace Cache {
 
     inline int currentLayer;
     inline int lastObjectCount;
-    
-    inline float layerAlphaMultiplier;
+    inline int layerAlpha;
 
     // robtops effectgameobjects does store all triggers, so lemme make my own even if its a lil bit scuffed :3c
     inline std::vector<EffectGameObject*> triggers;

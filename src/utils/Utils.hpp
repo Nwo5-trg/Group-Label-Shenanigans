@@ -4,6 +4,8 @@
 
 namespace Utils {
     cocos2d::CCPoint rotatePoint(cocos2d::CCPoint pos, cocos2d::CCPoint pivot, float rad);
+
+    std::unordered_set<int> parseIntArray(const std::string& input);
     
     cocos2d::CCPoint getTriggerBodyPos(GameObject* obj);
 
@@ -39,7 +41,5 @@ namespace Utils {
         3029, 3030, 3031, 31
     };
 
-    inline std::unordered_set<int> triggerWhitelist = {
-        3640, 1816, 3643
-    };
+    inline std::unordered_set<int> triggerWhitelist;
 }

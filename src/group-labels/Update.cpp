@@ -40,8 +40,9 @@ void GroupLabels::update(LevelEditorLayer* editor) {
         int group = Utils::getTriggerGroup(trigger);
         if (Settings::hide0Group && group == 0) continue;
 
+        updateLayerAlpha(trigger);
+
         auto res = std::to_chars(c, c + 12, group);
-        if (res.ec != std::errc()) continue;
         *res.ptr = '\0';
 
         Cache::updatedTriggers.insert(trigger);
@@ -49,6 +50,7 @@ void GroupLabels::update(LevelEditorLayer* editor) {
         auto label = getLabel(trigger);
         if (Cache::groupMap[trigger] != group) label->setString(c);
         label->setPosition(Utils::getTriggerBodyPos(trigger));
+        label->setOpacity(Cache::layerAlpha);
         label->setScaleX(trigger->m_scaleX * Settings::scale);
         label->setScaleY(trigger->m_scaleY * Settings::scale);
         if (Settings::rotate) label->setRotation(trigger->getRotation());
@@ -67,10 +69,10 @@ void GroupLabels::update(LevelEditorLayer* editor) {
 }
 
 void GroupLabels::updateLayerAlpha(GameObject* obj) {
-    Cache::layerAlphaMultiplier = Cache::currentLayer == -1 ||
+    Cache::layerAlpha = Cache::currentLayer == -1 ||
         ((obj->m_editorLayer == Cache::currentLayer)
         || (obj->m_editorLayer2 == Cache::currentLayer))
-    ? 1.0f : Settings::layerAlphaMultiplier;
+    ? 255 : 255 * Settings::layerAlphaMultiplier;
 }
 
 CCLabelBMFont* GroupLabels::getLabel(EffectGameObject* trigger) {

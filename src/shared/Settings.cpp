@@ -1,5 +1,6 @@
 #include "Settings.hpp"
 #include "Cache.hpp"
+#include "../utils/Utils.hpp"
 
 using namespace geode::prelude;
 using namespace Settings;
@@ -15,6 +16,8 @@ void Settings::updateSettings() {
     set(layerAlphaMultiplier, "layer-alpha-multiplier");
     set(xOff, "x-off");
     set(yOff, "y-off");
+
+    set(Utils::triggerWhitelist, "trigger-whitelist");
 }
 
 void Settings::set(bool& setting, const char* key) {
@@ -25,6 +28,9 @@ void Settings::set(int& setting, const char* key) {
 }
 void Settings::set(float& setting, const char* key) {
     setting = Cache::mod->getSettingValue<double>(key);
+}
+void Settings::set(std::unordered_set<int>& setting, const char* key) {
+    setting = Utils::parseIntArray(Cache::mod->getSettingValue<std::string>(key));
 }
 
 $on_mod(Loaded) {

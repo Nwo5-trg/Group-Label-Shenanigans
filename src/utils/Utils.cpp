@@ -13,6 +13,19 @@ CCPoint Utils::rotatePoint(CCPoint pos, CCPoint pivot, float rad) {
 	return r;
 }
 
+std::unordered_set<int> Utils::parseIntArray(const std::string& input) {
+    std::unordered_set<int> intSet;
+    auto start = 0;
+    while (true) {
+        auto comma = input.find(',', start);
+        auto num = std::strtol(input.substr(start, comma - start).c_str(), nullptr, 10);
+        if (num != 0) intSet.insert(num);
+        if (comma == std::string::npos) break;
+        start = comma + 1;
+    }
+    return intSet;
+}
+
 CCPoint Utils::getTriggerBodyPos(GameObject* obj) {
     auto objPos = obj->getPosition();
     auto bodyPos = ccp(objPos.x + Settings::xOff * obj->m_scaleX, objPos.y + Settings::yOff * obj->m_scaleY);
