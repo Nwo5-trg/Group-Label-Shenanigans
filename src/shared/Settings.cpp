@@ -10,14 +10,18 @@ void Settings::updateSettings() {
 
     set(rotate, "rotate");
     set(hide0Group, "hide-0-group");
+    set(moreLabelInfo, "more-label-info");
     
     set(opacity, "opacity");
     set(scale, "scale");
+    set(widthLimit, "width-limit");
     set(layerAlphaMultiplier, "layer-alpha-multiplier");
     set(xOff, "x-off");
     set(yOff, "y-off");
 
-    set(Utils::triggerWhitelist, "trigger-whitelist");
+    set(triggerWhitelist, "trigger-whitelist");
+
+    Utils::updateLabelTypeMap();
 }
 
 void Settings::set(bool& setting, const char* key) {

@@ -8,12 +8,18 @@
 	},
 	"id": "nwo5.group_labels",
 	"name": "Group Label Shenanigans",
-	"version": "v1.0.1",
+	"version": "v1.0.0",
 	"developer": "Nwo5",
 	"links": {"source": "https://github.com/Nwo5-trg/Group-Label-Shenanigans"},
 	"tags": ["editor", "bugfix", "customization", "utility", "enhancement", "offline"],
-	"description": "Short, free-form description of the mod. Shou",
+	"description": "shenanigans related to group labels idk :3c",
 	"settings": {
+		"more-label-info": {
+			"type": "bool",
+			"name": "More Label Info",
+			"description": "if its too messy for u disabling this will simplify everything to be kinda like the normal game",
+			"default": true
+		},
 		"rotate": {
 			"type": "bool",
 			"name": "Rotate",
@@ -31,6 +37,14 @@
 			"name": "Scale",
 			"default": 0.5,
 			"max": 100,
+			"min": 0
+		},
+		"width-limit": {
+			"type": "float",
+			"name": "Width Limit",
+			"description": "set to max to disable",
+			"default": 30,
+			"max": 50,
 			"min": 0
 		},
 		"layer-alpha-multiplier": {
@@ -64,7 +78,7 @@
 			"type": "string",
 			"name": "Trigger Whitelist",
 			"description": "these triggers wont get affected by the mod | maybe dont remove the ones in here by default if you like having collision blocks display properly | you can input more trigger ids like, '1,2,3,4,5'",
-			"default": "3640,1816,3643",
+			"default": "",
 			"filter": "1234567890,"
 		}
 	}

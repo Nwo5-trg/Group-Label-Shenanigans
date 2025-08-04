@@ -3,12 +3,16 @@
 namespace Settings {
     inline bool rotate;
     inline bool hide0Group;
+    inline bool moreLabelInfo;
     
     inline float opacity;
     inline float scale;
+    inline float widthLimit;
     inline float layerAlphaMultiplier;
     inline float xOff;
     inline float yOff;
+
+    inline std::unordered_set<int> triggerWhitelist;
     
     void updateSettings();
 

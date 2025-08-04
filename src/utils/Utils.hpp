@@ -1,38 +1,25 @@
 #pragma once
 #include "Constants.hpp"
-#include "Enums.hpp"
+#include "Types.hpp"
+
+#define TO_CHARS(ptr, num) ((ptr) = std::to_chars((ptr), Cache::labelCharBuffer + Constants::labelCharBufferSize, (num)).ptr)
+#define TO_CHARS_COL(ptr, num) ((ptr) = Utils::to_chars_col((ptr), Cache::labelCharBuffer + Constants::labelCharBufferSize, (num)))
+#define ADD_CHAR(ptr, chr) (*(ptr)++ = (chr))
 
 namespace Utils {
     cocos2d::CCPoint rotatePoint(cocos2d::CCPoint pos, cocos2d::CCPoint pivot, float rad);
 
     std::unordered_set<int> parseIntArray(const std::string& input);
+
+    char* to_chars_col(char* first, char* last, int value);
     
     cocos2d::CCPoint getTriggerBodyPos(GameObject* obj);
 
-    int getTriggerGroup(EffectGameObject* trigger);
+    void updateLayerAlpha(GameObject* obj);
 
-    inline std::unordered_map<int, LabelType> labelTypeMap = {
-        {1817, LabelType::ItemID}, {3641, LabelType::ItemID}, {3614, LabelType::ItemID},
-        {3615, LabelType::ItemID}, {3617, LabelType::ItemID},
+    void updateLabelTypeMap();
 
-        {1914, LabelType::CenterGroup}, {2914, LabelType::CenterGroup},
-
-        {22, LabelType::EnterEffect}, {24, LabelType::EnterEffect}, {23, LabelType::EnterEffect},
-        {25, LabelType::EnterEffect}, {26, LabelType::EnterEffect}, {27, LabelType::EnterEffect},
-        {28, LabelType::EnterEffect}, {55, LabelType::EnterEffect}, {56, LabelType::EnterEffect},
-        {57, LabelType::EnterEffect}, {58, LabelType::EnterEffect}, {59, LabelType::EnterEffect},
-        {1915, LabelType::EnterEffect}, {3017, LabelType::EnterEffect}, {3019, LabelType::EnterEffect},
-        {3018, LabelType::EnterEffect}, {3020, LabelType::EnterEffect}, {3021, LabelType::EnterEffect},
-        {3023, LabelType::EnterEffect},
-
-        {1934, LabelType::SFXID}, {3602, LabelType::SFXID},
-
-        {899, LabelType::ColorChannel},
-
-        {3033, LabelType::AnimationID},
-
-        {2903, LabelType::GradientID}
-    };
+    inline std::unordered_map<int, LabelType> labelTypeMap;
 
     inline std::unordered_set<int> triggerBlacklist = {
         1913, 2015, 2925, 1916, 2901, 2999, 3606, 1935, 2068, 3607, 2900, 1917,
@@ -41,5 +28,15 @@ namespace Utils {
         3029, 3030, 3031, 31
     };
 
-    inline std::unordered_set<int> triggerWhitelist;
+    inline std::unordered_set<int> centeredTriggersList = {
+        3640, 22, 24, 23, 25, 26, 27, 28, 55, 56, 57, 58, 59, 1915, 3017, 3019, 
+        3018, 3020, 3021, 3023
+    };
+
+    inline std::unordered_map<int, const char*> colorConversionsMap = {
+        {1004, "obj"}, {1000, "bg"}, {1001, "g1"}, {1009, "g2"},
+        {1013, "mg"}, {1014, "mg2"}, {1002, "line"}, {1003, "3dl"},
+        {1005, "p1"}, {1006, "p2"}, {1007, "lbg"}, {1010, "black"},
+        {1011, "white"}, {1012, "lighter"}
+    };
 }

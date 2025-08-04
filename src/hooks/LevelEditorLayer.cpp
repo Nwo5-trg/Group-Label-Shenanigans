@@ -1,5 +1,5 @@
 #include <Geode/modify/LevelEditorLayer.hpp>
-#include "../group-labels/Update.hpp"
+#include "../group-labels/Include.hpp"
 #include "../shared/Cache.hpp"
 
 using namespace geode::prelude;
@@ -9,11 +9,11 @@ class $modify(LevelEditorLayer) {
 		if (!LevelEditorLayer::init(p0, p1)) return false;
 
         Cache::labelMap.clear();
-        Cache::groupMap.clear();
+        Cache::labelInfoMap.clear();
 
         Cache::textObjectLayer = CCLayer::create();
         Cache::textObjectLayer->setPosition(0.0f, 0.0f);
-        Cache::textObjectLayer->setZOrder(5000);
+        Cache::textObjectLayer->setZOrder(10000);
         Cache::textObjectLayer->setID("group-labels-node"_spr);
         m_objectLayer->addChild(Cache::textObjectLayer);
 
@@ -21,7 +21,7 @@ class $modify(LevelEditorLayer) {
         
         return true;
     }
-
+    
     void updateDebugDraw() {
         LevelEditorLayer::updateDebugDraw();
         // ik with mods like quickfill its technically possible to not
@@ -38,7 +38,11 @@ class $modify(LevelEditorLayer) {
     void updateTriggers() {
         Cache::triggers.clear();
         for (auto obj : CCArrayExt<GameObject*>(m_objects)) {
-            if (obj->m_isTrigger) Cache::triggers.push_back(static_cast<EffectGameObject*>(obj));
+            if (obj->m_isTrigger) {
+                auto trigger = static_cast<EffectGameObject*>(obj);
+                if (auto label = trigger->m_objectLabel) label->setVisible(false);
+                Cache::triggers.push_back(trigger);
+            }
         }
     }
 };
