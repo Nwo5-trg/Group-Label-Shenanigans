@@ -10,8 +10,7 @@ void GroupLabels::updateLabelForTrigger(EffectGameObject* trigger) {
     if (Utils::triggerBlacklist.contains(id)) return;
     if (Settings::triggerWhitelist.contains(id)) return;
 
-    int triggerOpacity = trigger->getOpacity();
-    if (triggerOpacity == 0) return;
+    if (trigger->getOpacity() == 0) return;
     if (!trigger->isVisible()) return;
 
     auto pos = trigger->getPosition();
@@ -35,7 +34,7 @@ void GroupLabels::updateLabelForTrigger(EffectGameObject* trigger) {
         label->setString(Cache::labelCharBuffer);
     }
     label->setPosition(Utils::getTriggerBodyPos(trigger));
-    label->setOpacity(Cache::layerAlpha * triggerOpacity);
+    label->setOpacity(Cache::layerAlpha);
     
     CCSize objScale = {trigger->m_scaleX, trigger->m_scaleY};
     label->setScaleX(objScale.width * Settings::scale);

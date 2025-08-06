@@ -106,7 +106,7 @@ void Utils::updateLabelTypeMap() {
                 {3613, LabelType::TargetCenter}, {1912, LabelType::TargetCenter}, 
 
                 {1817, LabelType::Item}, {3641, LabelType::Item}, {3614, LabelType::Item},
-                {3615, LabelType::Item}, {3617, LabelType::Item},
+                {3615, LabelType::Item}, {3617, LabelType::Item}, {1816, LabelType::Item},
 
                 {1914, LabelType::Center},
 
