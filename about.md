@@ -6,6 +6,8 @@ adds group labels to more objects, some customization options, makes them not ro
 ## JSON
 u can customize label types further with json
 
+u gotta set the more label info setting to json btw
+
 json goes in geodes config folder, in a folder named **"nwo5.group_labels"** (click the folder icon in the geode menu and if you dont see a folder called **"config"** go back 1 folder in the hierarchy then u should see it)
 
 the json is formatted like so
