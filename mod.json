@@ -15,10 +15,11 @@
 	"description": "shenanigans related to group labels idk :3c",
 	"settings": {
 		"more-label-info": {
-			"type": "bool",
-			"name": "More Label Info",
-			"description": "if its too messy for u disabling this will simplify everything to be kinda like the normal game",
-			"default": true
+			"type": "string",
+			"name": "Label Type",
+			"one-of": ["More Label Info", "Vanilla", "JSON"],
+			"description": "read how to use json in the desc",
+			"default": "More Label Info"
 		},
 		"rotate": {
 			"type": "bool",

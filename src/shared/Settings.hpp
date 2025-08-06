@@ -1,9 +1,12 @@
 #pragma once
 
+enum class MapType;
+
 namespace Settings {
     inline bool rotate;
     inline bool hide0Group;
-    inline bool moreLabelInfo;
+
+    inline MapType moreLabelInfo;
     
     inline float opacity;
     inline float scale;

@@ -19,13 +19,8 @@ enum class LabelType {
     PulseColor
 };
 
-enum class GroupType {
-    TargetGroup,
-    CenterGroup,
-    ItemID,
-    EnterEffect,
-    SFXID,
-    ColorChannel,
-    AnimationID,
-    GradientID
+enum class MapType {
+    MoreLabelInfo,
+    Vanilla,
+    JSON
 };

@@ -19,7 +19,20 @@ namespace Utils {
 
     void updateLabelTypeMap();
 
+    void parseMap();
+
     inline std::unordered_map<int, LabelType> labelTypeMap;
+
+    inline std::unordered_map<std::string, LabelType> labelTypeStringMap = {
+        {"center", LabelType::Center}, {"target_center", LabelType::Target_Center},
+        {"target-center", LabelType::TargetCenter}, {"item", LabelType::Item},
+        {"item_anim", LabelType::Target_Anim}, {"anim_target-center", LabelType::Anim_TargetCenter},
+        {"target-center_item-item2", LabelType::TargetCenter_ItemItem2}, {"target_item-item2", LabelType::Target_ItemItem2},
+        {"item_target", LabelType::Item_Target}, {"target_item", LabelType::Target_Item},
+        {"gradient", LabelType::Gradient}, {"enter", LabelType::EnterEffect},
+        {"sfx", LabelType::SFX}, {"color", LabelType::Color},
+        {"pulsecolor", LabelType::PulseColor}
+    };
 
     inline std::unordered_set<int> triggerBlacklist = {
         1913, 2015, 2925, 1916, 2901, 2999, 3606, 1935, 2068, 3607, 2900, 1917,

@@ -10,7 +10,10 @@ void Settings::updateSettings() {
 
     set(rotate, "rotate");
     set(hide0Group, "hide-0-group");
-    set(moreLabelInfo, "more-label-info");
+    auto info = Cache::mod->getSettingValue<std::string>("more-label-info");
+    if (info == "More Label Info") moreLabelInfo = MapType::MoreLabelInfo;
+    else if (info == "Vanilla") moreLabelInfo = MapType::Vanilla;
+    else moreLabelInfo = MapType::JSON;
     
     set(opacity, "opacity");
     set(scale, "scale");

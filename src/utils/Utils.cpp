@@ -54,77 +54,83 @@ void Utils::updateLayerAlpha(GameObject* obj) {
 }
 
 void Utils::updateLabelTypeMap() {
-    if (Settings::moreLabelInfo) {
-        labelTypeMap = {
-            {1914, LabelType::Center}, {2914, LabelType::Center},
+    switch (Settings::moreLabelInfo) {
+        case MapType::MoreLabelInfo: {
+            labelTypeMap = {
+                {1914, LabelType::Center}, {2914, LabelType::Center},
 
-            {3640, LabelType::Target_Center},
+                {3640, LabelType::Target_Center},
 
-            {1346, LabelType::TargetCenter}, {2067, LabelType::TargetCenter}, {3016, LabelType::TargetCenter},
-            {3006, LabelType::TargetCenter}, {3007, LabelType::TargetCenter}, {3008, LabelType::TargetCenter},
-            {3009, LabelType::TargetCenter}, {3010, LabelType::TargetCenter}, {3608, LabelType::TargetCenter},
-            {3613, LabelType::TargetCenter}, {1912, LabelType::TargetCenter},
+                {1346, LabelType::TargetCenter}, {2067, LabelType::TargetCenter}, {3016, LabelType::TargetCenter},
+                {3006, LabelType::TargetCenter}, {3007, LabelType::TargetCenter}, {3008, LabelType::TargetCenter},
+                {3009, LabelType::TargetCenter}, {3010, LabelType::TargetCenter}, {3608, LabelType::TargetCenter},
+                {3613, LabelType::TargetCenter}, {1912, LabelType::TargetCenter},
 
-            {1817, LabelType::Item}, {3641, LabelType::Item}, {3617, LabelType::Item}, 
-            {1816, LabelType::Item},
-            
-            {1585, LabelType::Target_Anim},
+                {1817, LabelType::Item}, {3641, LabelType::Item}, {3617, LabelType::Item}, 
+                {1816, LabelType::Item},
+                
+                {1585, LabelType::Target_Anim},
 
-            {3033, LabelType::Anim_TargetCenter},
-            
-            {3620, LabelType::TargetCenter_ItemItem2}, {3609, LabelType::TargetCenter_ItemItem2},
+                {3033, LabelType::Anim_TargetCenter},
+                
+                {3620, LabelType::TargetCenter_ItemItem2}, {3609, LabelType::TargetCenter_ItemItem2},
 
-            {3619, LabelType::Target_ItemItem2}, {1815, LabelType::Target_ItemItem2},
+                {3619, LabelType::Target_ItemItem2}, {1815, LabelType::Target_ItemItem2},
 
-            {3614, LabelType::Item_Target},
+                {3614, LabelType::Item_Target},
 
-            {1611, LabelType::Target_Item}, {1811, LabelType::Target_Item}, {3615, LabelType::Target_Item},
+                {1611, LabelType::Target_Item}, {1811, LabelType::Target_Item}, {3615, LabelType::Target_Item},
 
-            {2903, LabelType::Gradient},
+                {2903, LabelType::Gradient},
 
-            {22, LabelType::EnterEffect}, {24, LabelType::EnterEffect}, {23, LabelType::EnterEffect},
-            {25, LabelType::EnterEffect}, {26, LabelType::EnterEffect}, {27, LabelType::EnterEffect},
-            {28, LabelType::EnterEffect}, {55, LabelType::EnterEffect}, {56, LabelType::EnterEffect},
-            {57, LabelType::EnterEffect}, {58, LabelType::EnterEffect}, {59, LabelType::EnterEffect},
-            {1915, LabelType::EnterEffect}, {3017, LabelType::EnterEffect}, {3019, LabelType::EnterEffect},
-            {3018, LabelType::EnterEffect}, {3020, LabelType::EnterEffect}, {3021, LabelType::EnterEffect},
-            {3023, LabelType::EnterEffect},
+                {22, LabelType::EnterEffect}, {24, LabelType::EnterEffect}, {23, LabelType::EnterEffect},
+                {25, LabelType::EnterEffect}, {26, LabelType::EnterEffect}, {27, LabelType::EnterEffect},
+                {28, LabelType::EnterEffect}, {55, LabelType::EnterEffect}, {56, LabelType::EnterEffect},
+                {57, LabelType::EnterEffect}, {58, LabelType::EnterEffect}, {59, LabelType::EnterEffect},
+                {1915, LabelType::EnterEffect}, {3017, LabelType::EnterEffect}, {3019, LabelType::EnterEffect},
+                {3018, LabelType::EnterEffect}, {3020, LabelType::EnterEffect}, {3021, LabelType::EnterEffect},
+                {3023, LabelType::EnterEffect},
 
-            {1934, LabelType::SFX}, {3602, LabelType::SFX},
+                {1934, LabelType::SFX}, {3602, LabelType::SFX},
 
-            {899, LabelType::Color},
+                {899, LabelType::Color},
 
-            {1006, LabelType::PulseColor}
-        };
-    } else {
-        labelTypeMap = {
-            {1346, LabelType::TargetCenter}, {2067, LabelType::TargetCenter}, {3016, LabelType::TargetCenter},
-            {3006, LabelType::TargetCenter}, {3007, LabelType::TargetCenter}, {3008, LabelType::TargetCenter},
-            {3009, LabelType::TargetCenter}, {3010, LabelType::TargetCenter}, {3608, LabelType::TargetCenter},
-            {3613, LabelType::TargetCenter}, {1912, LabelType::TargetCenter}, 
+                {1006, LabelType::PulseColor}
+            };
+        }
+        case MapType::Vanilla: {
+            labelTypeMap = {
+                {1346, LabelType::TargetCenter}, {2067, LabelType::TargetCenter}, {3016, LabelType::TargetCenter},
+                {3006, LabelType::TargetCenter}, {3007, LabelType::TargetCenter}, {3008, LabelType::TargetCenter},
+                {3009, LabelType::TargetCenter}, {3010, LabelType::TargetCenter}, {3608, LabelType::TargetCenter},
+                {3613, LabelType::TargetCenter}, {1912, LabelType::TargetCenter}, 
 
-            {1817, LabelType::Item}, {3641, LabelType::Item}, {3614, LabelType::Item},
-            {3615, LabelType::Item}, {3617, LabelType::Item},
+                {1817, LabelType::Item}, {3641, LabelType::Item}, {3614, LabelType::Item},
+                {3615, LabelType::Item}, {3617, LabelType::Item},
 
-            {1914, LabelType::Center},
+                {1914, LabelType::Center},
 
-            {22, LabelType::EnterEffect}, {24, LabelType::EnterEffect}, {23, LabelType::EnterEffect},
-            {25, LabelType::EnterEffect}, {26, LabelType::EnterEffect}, {27, LabelType::EnterEffect},
-            {28, LabelType::EnterEffect}, {55, LabelType::EnterEffect}, {56, LabelType::EnterEffect},
-            {57, LabelType::EnterEffect}, {58, LabelType::EnterEffect}, {59, LabelType::EnterEffect},
-            {1915, LabelType::EnterEffect}, {3017, LabelType::EnterEffect}, {3019, LabelType::EnterEffect},
-            {3018, LabelType::EnterEffect}, {3020, LabelType::EnterEffect}, {3021, LabelType::EnterEffect},
-            {3023, LabelType::EnterEffect},
+                {22, LabelType::EnterEffect}, {24, LabelType::EnterEffect}, {23, LabelType::EnterEffect},
+                {25, LabelType::EnterEffect}, {26, LabelType::EnterEffect}, {27, LabelType::EnterEffect},
+                {28, LabelType::EnterEffect}, {55, LabelType::EnterEffect}, {56, LabelType::EnterEffect},
+                {57, LabelType::EnterEffect}, {58, LabelType::EnterEffect}, {59, LabelType::EnterEffect},
+                {1915, LabelType::EnterEffect}, {3017, LabelType::EnterEffect}, {3019, LabelType::EnterEffect},
+                {3018, LabelType::EnterEffect}, {3020, LabelType::EnterEffect}, {3021, LabelType::EnterEffect},
+                {3023, LabelType::EnterEffect},
 
-            {3033, LabelType::Target_Anim},
+                {3033, LabelType::Target_Anim},
 
-            {2903, LabelType::Gradient},
+                {2903, LabelType::Gradient},
 
-            {1934, LabelType::SFX}, {3602, LabelType::SFX},
+                {1934, LabelType::SFX}, {3602, LabelType::SFX},
 
-            {899, LabelType::Color},
+                {899, LabelType::Color},
 
-            {1006, LabelType::PulseColor}
-        };
+                {1006, LabelType::PulseColor}
+            };
+        }
+        case MapType::JSON: {
+            parseMap();
+        }
     }
 }
