@@ -1,4 +1,6 @@
 {
+    "3640": { "type": "target_center" },
+
     "1346": { "type": "target-center" },
     "2067": { "type": "target-center" },
     "3016": { "type": "target-center" },
@@ -16,7 +18,6 @@
     "3614": { "type": "item" },
     "3615": { "type": "item" },
     "3617": { "type": "item" },
-    "1816": { "type": "item" },
 
     "1914": { "type": "center" },
 
