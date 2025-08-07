@@ -10,7 +10,10 @@
 	"name": "Group Label Shenanigans",
 	"version": "v1.0.0",
 	"developer": "Nwo5",
-	"links": {"source": "https://github.com/Nwo5-trg/Group-Label-Shenanigans"},
+	"links": {
+		"source": "https://github.com/Nwo5-trg/Group-Label-Shenanigans",
+		"community": "https://discord.gg/AeFeYWGUxZ"
+	},
 	"tags": ["editor", "bugfix", "customization", "utility", "enhancement", "offline"],
 	"description": "shenanigans related to group labels idk :3c",
 	"settings": {
