@@ -6,14 +6,14 @@ using namespace Utils;
 
 geode::Result<matjson::Value> Utils::parseJson(const char* path) {
     auto filePath = string::pathToString(Cache::mod->getConfigDir() / path);
-    if (!std::filesystem::exists(filePath)) return Err("");
+    if (!std::filesystem::exists(filePath)) return Err("no file");
 
     std::ifstream file(filePath);
     auto parseJson = matjson::parse(file);
-    if (!parseJson.isOk()) return Err("");
+    if (!parseJson) return Err("failed to parse");
 
     auto json = parseJson.unwrap();
-    if (!json.isObject()) return Err("");
+    if (!json.isObject()) return Err("not obj");
 
     return Ok(json);
 }
@@ -24,7 +24,10 @@ void Utils::parseLabelTypeMap() {
 
     // idk how to use geode results properly and i dont wanna read
     auto labelTypesRes = parseJson("label-types.json");
-    if (labelTypesRes.isErr()) return;
+    if (!labelTypesRes) {
+        log::error("{}", labelTypesRes.err());
+        return;
+    }
 
     auto json = labelTypesRes.unwrap();
     for (auto [id, value] : json) {
@@ -42,14 +45,14 @@ void Utils::parseLabelTypeMap() {
     }
 }
 void Utils::parseExtrasColors() {
-    labelTypeMap.clear();
-    triggerBlacklist.clear();
-
     // idk how to use geode results properly and i dont wanna read
-    auto labelTypesRes = parseJson("extras-colors.json");
-    if (labelTypesRes.isErr()) return;
+    auto extrasColorsRes = parseJson("extras-colors.json");
+    if (!extrasColorsRes) {
+        log::error("{}", extrasColorsRes.err());
+        return;
+    }
 
-    auto json = labelTypesRes.unwrap();
+    auto json = extrasColorsRes.unwrap();
     for (auto [id, value] : json) {
         if (!extrasStringMap.contains(id)) continue;
         auto type = extrasStringMap[id];
