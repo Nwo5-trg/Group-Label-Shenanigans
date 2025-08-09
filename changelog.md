@@ -1,6 +1,7 @@
 ## v1.0.0
 - **Added** shenanigans :3c
 - **Added** jsonnnnn yayyyy
+- **Added** activated group indicators
 
 - **Fixed** collision objects and random triggers
 - **Fixed** stuff in custom objects not showing groups

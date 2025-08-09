@@ -1,16 +1,17 @@
 # Group Label Shenanigans
 adds group labels to more objects, some customization options, makes them not rotate, yk, shenanigans
 
-***you dont get named editor groups support until its mod dev fixes it for mac, if ur a windows dev make a pr or smth idk***
+also sowwy if extras colors are like random theres a reason u can change these thngs
+
+***you dont get much named editor groups support until its mod dev fixes it for mac, if ur a windows dev make a pr or smth idk***
 
 ## JSON
-u can customize label types further with json
-
-u gotta set the more label info setting to json btw
+u can customize stuff further with json :3c
 
 json goes in geodes config folder, in a folder named **"nwo5.group_labels"** (click the folder icon in the geode menu and if you dont see a folder called **"config"** go back 1 folder in the hierarchy then u should see it)
 
-the json is formatted like so
+### Label Types
+you have to set the `label type` setting to json for this to work btw
 
 ```
 // label-types.json
@@ -47,7 +48,35 @@ anything without any entry defaults to just showing target group
 
 type names are formatted like topleft-topright_bottomleft-bottomright, if theres only one on either the top or bottom its centered, if not theyre side by side
 
-btw there are presets for more detail and vanilla in the github repo in a folder called presets
+### Extras Colors
+you have to set `json for extras` setting to true for this to work btw
+
+```
+// extras-colors.json
+
+{
+    "TYPE": {
+        "off-color": [0, 0, 0],
+        "off-opacity": 0,
+        "on-color": [255, 255, 255],
+        "on-opacity": 1
+    }
+}
+```
+
+valid types are:
+- "activate"
+- "control-id"
+- "blending"
+- "pulse-target-type" 
+- "override"
+- "follow"
+
+also you have to have all 4 properties of a type for to actually change
+
+if you dont define something valid for a type its just the default
+
+btw some presets are in the github repo for this mode in a folder called presets
 
 ## Credits
 - ***farp3*** for the no rotate idea

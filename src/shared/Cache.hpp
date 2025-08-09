@@ -21,8 +21,12 @@ namespace Cache {
     // robtops effectgameobjects does store all triggers, so lemme make my own even if its a lil bit scuffed :3c
     inline std::vector<EffectGameObject*> triggers;
 
-    inline std::unordered_map<EffectGameObject*, cocos2d::CCLabelBMFont*> labelMap;
+    // so i dont recreate them every frame
+    inline std::unordered_map<EffectGameObject*, cocos2d::CCLabelBMFont*> labelMap; 
+    inline std::unordered_map<EffectGameObject*, cocos2d::CCLabelBMFont*> extrasMap; 
+    // so i dont have to update the string every frame
     inline std::unordered_map<EffectGameObject*, TriggerLabelInfo> labelInfoMap;
+    // so ik what triggers i should delete labels for
     inline std::unordered_set<EffectGameObject*> updatedTriggers;
 
     namespace View {

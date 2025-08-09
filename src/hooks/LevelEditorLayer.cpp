@@ -11,6 +11,7 @@ class $modify(LevelEditorLayer) {
 
         Cache::labelMap.clear();
         Cache::labelInfoMap.clear();
+        Cache::extrasMap.clear();
 
         Cache::textObjectLayer = CCLayer::create();
         Cache::textObjectLayer->setPosition(0.0f, 0.0f);
@@ -19,14 +20,15 @@ class $modify(LevelEditorLayer) {
         m_objectLayer->addChild(Cache::textObjectLayer);
 
         updateTriggers();
+        Settings::updateSettings();
         
         return true;
     }
     
     void updateDebugDraw() {
         LevelEditorLayer::updateDebugDraw();
-        // ik with mods like quickfill its technically possible to not
-        // update this properly but ehhhh fuck off idc enough to come up with something better
+        // ik with mods like quickfill its technically possible to noy update this properly 
+        // but ehhhh fuck off idc enough to come up with something better
         int objects = m_objects->count();
         if (objects != Cache::lastObjectCount) {
             updateTriggers();

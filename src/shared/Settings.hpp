@@ -5,6 +5,8 @@ enum class MapType;
 namespace Settings {
     inline bool rotate;
     inline bool hide0Group;
+    inline bool extras;
+    inline bool jsonForExtras;
 
     inline MapType moreLabelInfo;
     
@@ -14,6 +16,9 @@ namespace Settings {
     inline float layerAlphaMultiplier;
     inline float xOff;
     inline float yOff;
+    inline float extrasScale;
+    inline float extrasXOff;
+    inline float extrasYOff;
 
     inline std::unordered_set<int> triggerWhitelist;
     

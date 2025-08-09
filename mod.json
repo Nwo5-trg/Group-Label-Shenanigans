@@ -43,27 +43,6 @@
 			"max": 100,
 			"min": 0
 		},
-		"width-limit": {
-			"type": "float",
-			"name": "Width Limit",
-			"description": "set to max to disable",
-			"default": 30,
-			"max": 50,
-			"min": 0
-		},
-		"layer-alpha-multiplier": {
-			"type": "float",
-			"name": "Layer Alpha Multiplier",
-			"default": 0.5,
-			"max": 1,
-			"min": 0
-		},
-		"hide-0-group": {
-			"type": "bool",
-			"name": "Hide 0 Group",
-			"description": "hide the label if the triggers group is 0",
-			"default": false
-		},
 		"x-off": {
 			"type": "float",
 			"name": "X Offset",
@@ -77,6 +56,60 @@
 			"default": -4.5,
 			"max": 1000,
 			"min": -1000
+		},
+		"width-limit": {
+			"type": "float",
+			"name": "Width Limit",
+			"description": "set to max to disable",
+			"default": 30,
+			"max": 50,
+			"min": 0
+		},
+		"extras": {
+			"type": "bool",
+			"name": "Extras",
+			"description": "activated group / control id indicators",
+			"default": true
+		},
+		"json-for-extras": {
+			"type": "bool",
+			"name": "Use JSON for Extras",
+			"description": "read how to use json in the desc",
+			"default": false
+		},
+		"extras-scale": {
+			"type": "float",
+			"name": "Extras Scale",
+			"default": 0.75,
+			"max": 100,
+			"min": 0
+		},
+		"extras-x-off": {
+			"type": "float",
+			"name": "Extras X Offset",
+			"default": 8.5,
+			"max": 1000,
+			"min": -1000
+		},
+		"extras-y-off": {
+			"type": "float",
+			"name": "Extras Y Offset",
+			"default": 8.5,
+			"max": 1000,
+			"min": -1000
+		},
+		"layer-alpha-multiplier": {
+			"type": "float",
+			"name": "Layer Alpha Multiplier",
+			"default": 0.5,
+			"max": 1,
+			"min": 0
+		},
+		"hide-0-group": {
+			"type": "bool",
+			"name": "Hide 0 Group",
+			"description": "hide the label if the triggers group is 0",
+			"default": false
 		},
 		"trigger-whitelist": {
 			"type": "string",

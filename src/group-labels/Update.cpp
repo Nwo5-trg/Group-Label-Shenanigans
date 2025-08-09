@@ -28,12 +28,17 @@ void GroupLabels::update(LevelEditorLayer* editor) {
         updateLabelForTrigger(trigger);
     }
 
-    for (auto it = Cache::labelMap.begin(); it != Cache::labelMap.end();) {
+    cullUnused(Cache::labelMap, false);
+    cullUnused(Cache::extrasMap, true);
+}
+
+void GroupLabels::cullUnused(std::unordered_map<EffectGameObject*, CCLabelBMFont*>& vector, bool extra) {
+    for (auto it = vector.begin(); it != vector.end();) {
         auto* trigger = it->first;
         if (!Cache::updatedTriggers.contains(trigger)) {
             it->second->removeMeAndCleanup();
-            it = Cache::labelMap.erase(it);
-            Cache::labelInfoMap.erase(trigger);
+            it = vector.erase(it);
+            if (!extra) Cache::labelInfoMap.erase(trigger);
         } else it++;
     }
 }

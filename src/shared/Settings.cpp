@@ -10,6 +10,9 @@ void Settings::updateSettings() {
 
     set(rotate, "rotate");
     set(hide0Group, "hide-0-group");
+    set(extras, "extras");
+    set(jsonForExtras, "json-for-extras");
+
     auto info = Cache::mod->getSettingValue<std::string>("more-label-info");
     if (info == "More Label Info") moreLabelInfo = MapType::MoreLabelInfo;
     else if (info == "Vanilla") moreLabelInfo = MapType::Vanilla;
@@ -21,10 +24,14 @@ void Settings::updateSettings() {
     set(layerAlphaMultiplier, "layer-alpha-multiplier");
     set(xOff, "x-off");
     set(yOff, "y-off");
+    set(extrasScale, "extras-scale");
+    set(extrasXOff, "extras-x-off");
+    set(extrasYOff, "extras-y-off");
 
     set(triggerWhitelist, "trigger-whitelist");
 
     Utils::updateLabelTypeMap();
+    Utils::updateExtrasColors();
 }
 
 void Settings::set(bool& setting, const char* key) {

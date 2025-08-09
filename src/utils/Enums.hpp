@@ -19,6 +19,16 @@ enum class LabelType {
     PulseColor
 };
 
+enum class ExtrasType {
+    Activate,
+    TouchToggle,
+    ControlID,
+    Blending,
+    PulseTargetType,
+    Override,
+    Follow
+};
+
 enum class MapType {
     MoreLabelInfo,
     Vanilla,

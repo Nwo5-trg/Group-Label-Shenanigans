@@ -30,18 +30,26 @@ std::unordered_set<int> Utils::parseIntArray(const std::string& input) {
 char* Utils::to_chars_col(char* first, char* last, int value) {
     if (colorConversionsMap.contains(value)) {
         auto str = colorConversionsMap[value];
-        return std::copy(str, str + std::strlen(str), first);
+        while (*str) *first++ = *str++;
+        return first;
     }
     return std::to_chars(first, last, value).ptr;
 }
 
-CCPoint Utils::getTriggerBodyPos(GameObject* obj) {
+CCPoint Utils::getOffsetPos(GameObject* obj, bool extra) {
     auto objPos = obj->getPosition();
-    auto bodyPos = ccp(
-        objPos.x + Settings::xOff * obj->m_scaleX, 
+
+    auto bodyPos = extra
+    ? ccp(
+        objPos.x + Settings::extrasXOff * obj->m_scaleX,
+        objPos.y + Settings::extrasYOff * obj->m_scaleY
+    )
+    : ccp(
+        objPos.x + Settings::xOff * obj->m_scaleX,
         objPos.y + (Utils::centeredTriggersList.contains(obj->m_objectID) 
-            ? 0.0f : Settings::yOff) * obj->m_scaleY
+                ? -Settings::yOff : 0.0f) + Settings::yOff * obj->m_scaleY
     );
+
     return rotatePoint(bodyPos, objPos, -obj->getRotation() * Constants::degToRad);
 }
 
@@ -129,7 +137,29 @@ void Utils::updateLabelTypeMap() {
             };
         }
         case MapType::JSON: {
-            parseMap();
+            parseLabelTypeMap();
         }
+    }
+}
+
+void Utils::updateExtrasColors() {
+    extrasColorMap = {
+        {ExtrasType::Activate, {{{255, 63, 63}, 1.0f}, {{0, 255, 127}, 1.0f}}},
+
+        {ExtrasType::TouchToggle, {{{255, 63, 63}, 1.0f}, {{0, 255, 127}, 1.0f}}},
+
+        {ExtrasType::ControlID, {{{0, 0, 0}, 0.0f}, {{255, 127, 0}, 1.0f}}},
+        
+        {ExtrasType::Blending, {{{0, 0, 0}, 0.0f}, {{255, 255, 255}, 1.0f}}}, 
+        
+        {ExtrasType::PulseTargetType, {{{0, 0, 0}, 0.0f}, {{0, 255, 0}, 1.0f}}}, 
+
+        {ExtrasType::Override, {{{0, 0, 0}, 0.0f}, {{255, 63, 63}, 1.0f}}}, 
+
+        {ExtrasType::Follow, {{{0, 0, 0}, 0.0f}, {{255, 255, 255}, 1.0f}}}
+    };
+    
+    if (Settings::jsonForExtras) {
+        parseExtrasColors();
     }
 }

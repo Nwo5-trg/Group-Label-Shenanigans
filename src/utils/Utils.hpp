@@ -13,24 +13,39 @@ namespace Utils {
 
     char* to_chars_col(char* first, char* last, int value);
     
-    cocos2d::CCPoint getTriggerBodyPos(GameObject* obj);
+    cocos2d::CCPoint getOffsetPos(GameObject* obj, bool extra);
 
     void updateLayerAlpha(GameObject* obj);
 
     void updateLabelTypeMap();
+    void updateExtrasColors();
 
-    void parseMap();
+    geode::Result<matjson::Value> parseJson(const char* path);
+
+    void parseLabelTypeMap();
+    void parseExtrasColors();
+    
+    cocos2d::ccColor3B jsonGetColor(const matjson::Value& value);
+    unsigned int jsonGetUInt(const matjson::Value& value);
+    float jsonGetFloat(const matjson::Value& value);
 
     inline std::unordered_map<int, LabelType> labelTypeMap;
 
     inline std::unordered_map<std::string, LabelType> labelTypeStringMap = {
-        {"center", LabelType::Center}, {"target_center", LabelType::Target_Center},
-        {"target-center", LabelType::TargetCenter}, {"item", LabelType::Item},
-        {"item_anim", LabelType::Target_Anim}, {"anim_target-center", LabelType::Anim_TargetCenter},
-        {"target-center_item-item2", LabelType::TargetCenter_ItemItem2}, {"target_item-item2", LabelType::Target_ItemItem2},
-        {"item_target", LabelType::Item_Target}, {"target_item", LabelType::Target_Item},
-        {"gradient", LabelType::Gradient}, {"enter", LabelType::EnterEffect},
-        {"sfx", LabelType::SFX}, {"color", LabelType::Color},
+        {"center", LabelType::Center}, 
+        {"target_center", LabelType::Target_Center}, 
+        {"target-center", LabelType::TargetCenter}, 
+        {"item", LabelType::Item},
+        {"item_anim", LabelType::Target_Anim}, 
+        {"anim_target-center", LabelType::Anim_TargetCenter},
+        {"target-center_item-item2", LabelType::TargetCenter_ItemItem2}, 
+        {"target_item-item2", LabelType::Target_ItemItem2},
+        {"item_target", LabelType::Item_Target}, 
+        {"target_item", LabelType::Target_Item},
+        {"gradient", LabelType::Gradient}, 
+        {"enter", LabelType::EnterEffect},
+        {"sfx", LabelType::SFX}, 
+        {"color", LabelType::Color},
         {"pulsecolor", LabelType::PulseColor}
     };
 
@@ -52,4 +67,32 @@ namespace Utils {
         {1005, "p1"}, {1006, "p2"}, {1007, "lbg"}, {1010, "black"},
         {1011, "white"}, {1012, "lighter"}
     };
+
+    inline std::unordered_map<int, ExtrasType> extrasMap = {
+        {1611, ExtrasType::Activate}, {1811, ExtrasType::Activate}, {1815, ExtrasType::Activate},
+
+        {1595, ExtrasType::TouchToggle}, 
+
+        {1616, ExtrasType::ControlID},
+        
+        {899, ExtrasType::Blending}, 
+        
+        {1006, ExtrasType::PulseTargetType}, 
+
+        {1817, ExtrasType::Override}, 
+
+        {1914, ExtrasType::Follow}
+    };
+
+    inline std::unordered_map<std::string, ExtrasType> extrasStringMap = {
+        {"activate", ExtrasType::Activate},
+        {"touch-toggle", ExtrasType::TouchToggle},
+        {"control-id", ExtrasType::ControlID},
+        {"blending", ExtrasType::Blending}, 
+        {"pulse-target-type", ExtrasType::PulseTargetType}, 
+        {"override", ExtrasType::Override}, 
+        {"follow", ExtrasType::Follow}
+    };
+
+    inline std::unordered_map<ExtrasType, std::pair<std::pair<cocos2d::ccColor3B, float>, std::pair<cocos2d::ccColor3B, float>>> extrasColorMap;
 }
