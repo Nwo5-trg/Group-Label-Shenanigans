@@ -1,4 +1,6 @@
 ## v1.0.1
+- **Added** labels to the actual trigger instead of a seperate layer
+
 - **Fixed** non json label types not having trigger blacklist
 
 ## v1.0.0

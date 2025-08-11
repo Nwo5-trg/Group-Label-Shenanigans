@@ -9,16 +9,6 @@ class $modify(LevelEditorLayer) {
     bool init(GJGameLevel* p0, bool p1) {	
 		if (!LevelEditorLayer::init(p0, p1)) return false;
 
-        Cache::labelMap.clear();
-        Cache::labelInfoMap.clear();
-        Cache::extrasMap.clear();
-
-        Cache::textObjectLayer = CCLayer::create();
-        Cache::textObjectLayer->setPosition(0.0f, 0.0f);
-        Cache::textObjectLayer->setZOrder(10000);
-        Cache::textObjectLayer->setID("group-labels-node"_spr);
-        m_objectLayer->addChild(Cache::textObjectLayer);
-
         updateTriggers();
         Settings::updateSettings();
         

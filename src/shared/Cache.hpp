@@ -4,12 +4,8 @@
 
 namespace Cache {
     inline geode::Mod* mod;
-    
-    inline cocos2d::CCLayer* textObjectLayer;
 
-    inline int currentLayer;
     inline int lastObjectCount;
-    inline int layerAlpha;
 
     // in my search for the fastest way to convert shit to a string we are going c style :3
     // (this is an awful idea and a direct result of my laziness)

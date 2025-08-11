@@ -15,8 +15,6 @@ namespace Utils {
     
     cocos2d::CCPoint getOffsetPos(GameObject* obj, bool extra);
 
-    void updateLayerAlpha(GameObject* obj);
-
     void updateLabelTypeMap();
     void updateExtrasColors();
 

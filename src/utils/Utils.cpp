@@ -37,28 +37,16 @@ char* Utils::to_chars_col(char* first, char* last, int value) {
 }
 
 CCPoint Utils::getOffsetPos(GameObject* obj, bool extra) {
-    auto objPos = obj->getPosition();
-
-    auto bodyPos = extra
+    return (extra
     ? ccp(
-        objPos.x + Settings::extrasXOff * obj->m_scaleX,
-        objPos.y + Settings::extrasYOff * obj->m_scaleY
+        Settings::extrasXOff, 
+        Settings::extrasYOff
     )
     : ccp(
-        objPos.x + Settings::xOff * obj->m_scaleX,
-        objPos.y + (Utils::centeredTriggersList.contains(obj->m_objectID) 
-                ? -Settings::yOff : 0.0f) + Settings::yOff * obj->m_scaleY
-    );
-
-    return rotatePoint(bodyPos, objPos, -obj->getRotation() * Constants::degToRad);
-}
-
-void Utils::updateLayerAlpha(GameObject* obj) {
-    Cache::layerAlpha = Cache::currentLayer == -1 ||
-        ((obj->m_editorLayer == Cache::currentLayer)
-        || (obj->m_editorLayer2 != 0 
-            && obj->m_editorLayer2 == Cache::currentLayer))
-    ? 255 : 255 * Settings::layerAlphaMultiplier;
+        Settings::xOff,
+        (Utils::centeredTriggersList.contains(obj->m_objectID) 
+        ? -Settings::yOff : 0.0f) + Settings::yOff
+    )) + (obj->getContentSize() / 2);
 }
 
 void Utils::updateLabelTypeMap() {
@@ -158,19 +146,19 @@ void Utils::updateLabelTypeMap() {
 
 void Utils::updateExtrasColors() {
     extrasColorMap = {
-        {ExtrasType::Activate, {{{255, 63, 63}, 1.0f}, {{0, 255, 127}, 1.0f}}},
+        {ExtrasType::Activate, {{{255, 63, 63}, 255.0f}, {{0, 255, 127}, 255.0f}}},
 
-        {ExtrasType::TouchToggle, {{{255, 63, 63}, 1.0f}, {{0, 255, 127}, 1.0f}}},
+        {ExtrasType::TouchToggle, {{{255, 63, 63}, 255.0f}, {{0, 255, 127}, 255.0f}}},
 
-        {ExtrasType::ControlID, {{{0, 0, 0}, 0.0f}, {{255, 127, 0}, 1.0f}}},
+        {ExtrasType::ControlID, {{{0, 0, 0}, 0.0f}, {{255, 127, 0}, 255.0f}}},
         
-        {ExtrasType::Blending, {{{0, 0, 0}, 0.0f}, {{255, 255, 255}, 1.0f}}}, 
+        {ExtrasType::Blending, {{{0, 0, 0}, 0.0f}, {{255, 255, 255}, 255.0f}}}, 
         
-        {ExtrasType::PulseTargetType, {{{0, 0, 0}, 0.0f}, {{0, 255, 0}, 1.0f}}}, 
+        {ExtrasType::PulseTargetType, {{{0, 0, 0}, 0.0f}, {{0, 255, 0}, 255.0f}}}, 
 
-        {ExtrasType::Override, {{{0, 0, 0}, 0.0f}, {{255, 63, 63}, 1.0f}}}, 
+        {ExtrasType::Override, {{{0, 0, 0}, 0.0f}, {{255, 63, 63}, 255.0f}}}, 
 
-        {ExtrasType::Follow, {{{0, 0, 0}, 0.0f}, {{255, 255, 255}, 1.0f}}}
+        {ExtrasType::Follow, {{{0, 0, 0}, 0.0f}, {{255, 255, 255}, 255.0f}}}
     };
     
     if (Settings::jsonForExtras) {

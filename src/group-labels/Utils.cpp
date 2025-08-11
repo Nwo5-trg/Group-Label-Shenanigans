@@ -6,9 +6,12 @@ using namespace geode::prelude;
 
 CCLabelBMFont* GroupLabels::getLabelNode(EffectGameObject* trigger) {
     if (Cache::labelMap.contains(trigger)) return Cache::labelMap[trigger];
+
     auto label = CCLabelBMFont::create("", "bigFont.fnt");
     label->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
-    Cache::textObjectLayer->addChild(label);
+    label->setZOrder(10);
+    trigger->addChild(label);
+
     Cache::labelMap[trigger] = label;
     return label;
 }
@@ -154,9 +157,11 @@ void GroupLabels::getLabelFromInfo() {
 
 CCLabelBMFont* GroupLabels::getExtrasNode(EffectGameObject* trigger) {
     if (Cache::extrasMap.contains(trigger)) return Cache::extrasMap[trigger];
+
     auto label = CCLabelBMFont::create(".", "bigFont.fnt");
-    label->setZOrder(-1);
-    Cache::textObjectLayer->addChild(label);
+    label->setZOrder(5);
+    trigger->addChild(label);
+    
     Cache::extrasMap[trigger] = label;
     return label;
 }
@@ -189,5 +194,5 @@ void GroupLabels::updateExtrasColor(CCLabelBMFont* extra, EffectGameObject* trig
     }
     auto& pair = activated ? Utils::extrasColorMap[type].second : Utils::extrasColorMap[type].first;
     extra->setColor(pair.first);
-    extra->setOpacity(Cache::layerAlpha * pair.second);
+    extra->setOpacity(pair.second);
 }

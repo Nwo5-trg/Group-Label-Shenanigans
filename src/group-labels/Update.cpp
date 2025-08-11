@@ -22,8 +22,6 @@ void GroupLabels::update(LevelEditorLayer* editor) {
 
     Cache::updatedTriggers.clear();
 
-    Cache::currentLayer = editor->m_currentLayer;
-
     for (auto trigger : Cache::triggers) {
         updateLabelForTrigger(trigger);
     }

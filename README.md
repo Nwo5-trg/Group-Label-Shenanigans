@@ -59,7 +59,7 @@ you have to set `json for extras` setting to true for this to work btw
         "off-color": [0, 0, 0],
         "off-opacity": 0,
         "on-color": [255, 255, 255],
-        "on-opacity": 1
+        "on-opacity": 255
     }
 }
 ```

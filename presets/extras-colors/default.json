@@ -1,44 +1,44 @@
 {
     "activate": {
         "off-color": [255, 63, 63],
-        "off-opacity": 1,
+        "off-opacity": 255,
         "on-color": [0, 255, 127],
-        "on-opacity": 1
+        "on-opacity": 255
     },
     "touch-toggle": {
         "off-color": [255, 63, 63],
-        "off-opacity": 1,
+        "off-opacity": 255,
         "on-color": [0, 255, 127],
-        "on-opacity": 1
+        "on-opacity": 255
     },
     "control-id": {
         "off-color": [0, 0, 0],
         "off-opacity": 0,
         "on-color": [255, 127, 0],
-        "on-opacity": 1
+        "on-opacity": 255
     },
     "blending": {
         "off-color": [0, 0, 0],
         "off-opacity": 0,
         "on-color": [255, 255, 255],
-        "on-opacity": 1
+        "on-opacity": 255
     },
     "pulse-target-type": {
         "off-color": [0, 0, 0],
         "off-opacity": 0,
         "on-color": [0, 255, 0],
-        "on-opacity": 1
+        "on-opacity": 255
     },
     "override": {
         "off-color": [0, 0, 0],
         "off-opacity": 0,
         "on-color": [255, 63, 63],
-        "on-opacity": 1
+        "on-opacity": 255
     },
     "follow": {
         "off-color": [0, 0, 0],
         "off-opacity": 0,
         "on-color": [255, 255, 255],
-        "on-opacity": 1
+        "on-opacity": 255
     }
 }

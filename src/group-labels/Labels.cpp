@@ -24,11 +24,8 @@ void GroupLabels::updateLabelForTrigger(EffectGameObject* trigger) {
     if (Settings::hide0Group && Cache::labelInfo == 0) return;
     bool labelInfoUpdated = Cache::labelInfoMap[trigger] != Cache::labelInfo;
 
-    Utils::updateLayerAlpha(trigger);
-
     Cache::updatedTriggers.insert(trigger);
 
-    CCSize objScale = {trigger->m_scaleX, trigger->m_scaleY};
     float rotation = trigger->getRotation();
 
     // create label
@@ -39,33 +36,26 @@ void GroupLabels::updateLabelForTrigger(EffectGameObject* trigger) {
         label->setString(Cache::labelCharBuffer);
     }
     label->setPosition(Utils::getOffsetPos(trigger, false));
-    label->setOpacity(Cache::layerAlpha);
-    
-    label->setScaleX(objScale.width * Settings::scale);
-    label->setScaleY(objScale.height * Settings::scale);
+    label->setScale(Settings::scale);
 
-    float widthLimit = Settings::widthLimit * std::max(objScale.width, objScale.height);
-    if (widthLimit < 50.0f) {
+    if (Settings::widthLimit < 50.0f) {
         float width = label->getScaledContentWidth();
-        if (width > widthLimit) {
-            label->setScale(label->getScale() * (widthLimit / width));
+        if (width > Settings::widthLimit) {
+            label->setScale(label->getScale() * (Settings::widthLimit / width));
         }
     }
 
-    if (Settings::rotate) label->setRotation(rotation);
+    if (!Settings::rotate) label->setRotation(-rotation);
 
     if (labelInfoUpdated) Cache::labelInfoMap[trigger] = Cache::labelInfo;
 
     // create extra
+
     if (!Settings::extras) return;
     if (!Utils::extrasMap.contains(id)) return;
 
     auto extra = getExtrasNode(trigger);
     extra->setPosition(Utils::getOffsetPos(trigger, true));
+    extra->setScale(Settings::extrasScale);
     updateExtrasColor(extra, trigger);
-    
-    extra->setScaleX(objScale.width * Settings::extrasScale);
-    extra->setScaleY(objScale.height * Settings::extrasScale);
-
-    extra->setRotation(rotation);
 }
