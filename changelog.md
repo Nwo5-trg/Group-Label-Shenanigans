@@ -1,3 +1,6 @@
+## v1.0.1
+- **Fixed** non json label types not having trigger blacklist
+
 ## v1.0.0
 - **Added** shenanigans :3c
 - **Added** jsonnnnn yayyyy
