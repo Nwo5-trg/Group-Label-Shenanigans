@@ -1,3 +1,6 @@
+## v1.0.2
+- **Fixed** its no longer crashing and burning
+
 ## v1.0.1
 - **Added** labels to the actual trigger instead of a seperate layer
 
