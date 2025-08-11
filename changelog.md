@@ -1,3 +1,6 @@
+## v1.0.4
+- **Fixed** levels prolly being unoptimized outside of the editor (how do i fuck it up that bad by forgetting one line)
+
 ## v1.0.3
 - **Fixed** it was still crashing and burning
 
