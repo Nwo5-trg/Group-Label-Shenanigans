@@ -9,7 +9,9 @@ using namespace geode::prelude;
 class $modify(LevelEditorLayer) {
     bool init(GJGameLevel* p0, bool p1) {	
 		if (!LevelEditorLayer::init(p0, p1)) return false;
-
+        Cache::labelMap.clear();
+        Cache::extrasMap.clear();
+        
         updateTriggers();
         Settings::updateSettings();
         
@@ -45,18 +47,5 @@ class $modify(LevelEditorLayer) {
         if (label && !Settings::triggerWhitelist.contains(trigger->m_objectID)) {
             label->setVisible(false);
         }
-    }
-
-    GameObject* createObject(int p0, CCPoint p1, bool p2) {
-        GameObject* ret = LevelEditorLayer::createObject(p0, p1, p2);
-        if (auto trigger = typeinfo_cast<EffectGameObject*>(ret)) {
-            if (
-                Utils::triggerBlacklist.contains(trigger->m_objectID) ||
-                Settings::triggerWhitelist.contains(trigger->m_objectID)
-            ) return ret;
-            
-            trigger->m_hasSpecialChild = true;
-        }
-        return ret;
     }
 };

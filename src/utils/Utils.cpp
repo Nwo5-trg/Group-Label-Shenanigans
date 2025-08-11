@@ -99,6 +99,7 @@ void Utils::updateLabelTypeMap() {
                 2909, 2910, 2911, 2912, 2916, 2917, 2920, 2921, 2922, 2923, 2924, 1520,
                 3029, 3030, 3031, 31
             };
+            break;
         }
         case MapType::Vanilla: {
             labelTypeMap = {
@@ -137,9 +138,11 @@ void Utils::updateLabelTypeMap() {
                 2909, 2910, 2911, 2912, 2916, 2917, 2920, 2921, 2922, 2923, 2924, 1520,
                 3029, 3030, 3031, 31
             };
+            break;
         }
         case MapType::JSON: {
             parseLabelTypeMap();
+            break;
         }
     }
 }

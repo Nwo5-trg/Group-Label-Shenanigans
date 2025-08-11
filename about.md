@@ -81,7 +81,7 @@ btw some presets are in the github repo for this mode in a folder called presets
 ## Credits
 - ***farp3*** for the no rotate idea
 - ***sandboxer*** for the *"add group labels to stuff that should really have group labels but dont for some reason"* idea
-- ***alphalaneous*** most the reason v1.0.1 and v1.0.2 exist thxxxx
+- ***alphalaneous*** most the reason v1.0.1 and v1.0.2 and v1.0.3 exist thxxxx
 
 ## Quote
 ***"*** *this is one of those suggestions where people go "i think the new car from 2.2 should have windows on the doors" and i go "what the fuck do you mean the new car from 2.2 doesn't already have windows on the doors" and then i check and it turns out indeed the new car from 2.2 has no windows on the doors* ***"*** - ***HJfod***
